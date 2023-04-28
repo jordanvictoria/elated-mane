@@ -13,4 +13,5 @@
         "--load-plugins=pylint_django",
         "--django-settings-module=levelup.settings",
     ],
+    "python.linting.enabled": true,
 }

@@ -20,9 +20,9 @@ class AppointmentView(ViewSet):
         # Check for invalid characters in the title
         prepaid = request.data.get("prepaid", None)
         appointment_date = request.data.get("appointment_date", None)
-        stylist_id = request.data.get("stylist_id", None)
+        customer_id = request.data.get("customer_id", None)
 
-        appointment.stylist = User.objects.get(pk=stylist_id)
+        appointment.customer = User.objects.get(pk=customer_id)
         appointment.prepaid = prepaid
         appointment.appointment_date = appointment_date
         appointment.save()
@@ -59,9 +59,9 @@ class AppointmentView(ViewSet):
         appointment = Appointment()
         prepaid = request.data.get("prepaid", None)
         appointment_date = request.data.get("appointment_date", None)
-        stylist_id = request.data.get("stylist_id", None)
+        customer_id = request.data.get("customer_id", None)
 
-        appointment.stylist = User.objects.get(pk=stylist_id)
+        appointment.customer = User.objects.get(pk=customer_id)
         appointment.prepaid = prepaid
         appointment.appointment_date = appointment_date
         appointment.save()
@@ -77,4 +77,4 @@ class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         """JSON serializer for appointment creator"""
         model = Appointment
-        fields = ('id', 'stylist', 'prepaid', 'appointment_date',)
+        fields = ('id', 'customer', 'prepaid', 'appointment_date',)
